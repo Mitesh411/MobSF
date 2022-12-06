@@ -1,0 +1,51 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Set-up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - name: Set-up Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.9.1+hotfix.6'
+
+      - name: Flutter Install Dependencies
+      - run: flutter pub get
+
+      - name: Flutter Test
+        run: flutter test
+
+      - name: Flutter Build
+        run: flutter build apk
+
+      - name: GitHub Action for MobSF
+        uses: fundacaocerti/mobsf-action@v1.5
+        env:
+          INPUT_FILE_NAME: ${{ github.workspace }}/MaestroMobile.apk
+          SCAN_TYPE: apk
+          OUTPUT_FILE_NAME: mobsf-report
+
+      - name: Upload MobSF Analysis PDF Result
+        uses: actions/upload-artifact@v2
+        with:
+          name: mobsf-report.pdf
+          path: mobsf-report.pdf
+
+      - name: Upload MobSF Analysis JSON Result
+        uses: actions/upload-artifact@v2
+        with:
+          name: mobsf-report.json
+          path: mobsf-report.json
