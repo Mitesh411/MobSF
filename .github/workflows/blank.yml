@@ -12,11 +12,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
 
-      - name: Set-up Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
-
       - name: GitHub Action for MobSF
         uses: fundacaocerti/mobsf-action@v1.5
         env:
