@@ -15,7 +15,7 @@ jobs:
       - name: GitHub Action for MobSF
         uses: fundacaocerti/mobsf-action@v1.5
         env:
-          INPUT_FILE_NAME: ${{ github.workspace }}/MaestroMobile.apk
+          INPUT_FILE_NAME: MaestroMobile.apk
           SCAN_TYPE: apk
           OUTPUT_FILE_NAME: mobsf-report
 
