@@ -20,7 +20,7 @@ jobs:
       - name: Run MobSF Analysis
         uses: fundacaocerti/mobsf-action@v1.7.1
         env:
-          INPUT_FILE_NAME: MobSF/MaestroMobile.apk
+          INPUT_FILE_NAME: MaestroMobile.apk
           SCAN_TYPE: apk
           OUTPUT_FILE_NAME: mobsf-report
 
