@@ -23,7 +23,7 @@ jobs:
           flutter-version: '1.9.1+hotfix.6'
 
       - name: Flutter Install Dependencies
-      - run: flutter pub get
+        run: flutter pub get
 
       - name: Flutter Test
         run: flutter test
